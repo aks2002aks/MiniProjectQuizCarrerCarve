@@ -1,9 +1,11 @@
 // server.js
 
 const express = require("express");
+const mongoSanitize = require("express-mongo-sanitize");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
+app.use(mongoSanitize());
 
 const connectDatabase = require("./database");
 
