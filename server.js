@@ -1,11 +1,11 @@
 // server.js
 
 const express = require("express");
-require('dotenv').config();
+require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-const connectDatabase = require('./database');
+const connectDatabase = require("./database");
 
 // Connect to MongoDB
 connectDatabase();
@@ -30,3 +30,4 @@ app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
 
+module.exports = app;
