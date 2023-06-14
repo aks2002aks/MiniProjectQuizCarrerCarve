@@ -17,7 +17,7 @@ const responseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Test",
       },
-      selectedAnswer: [String],
+      selectedAnswers: [String],
     },
   ],
   score: Number,

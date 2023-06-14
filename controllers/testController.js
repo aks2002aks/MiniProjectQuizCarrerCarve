@@ -11,7 +11,7 @@ const submitTest = async (req, res) => {
     });
 
     if (existingResponse) {
-      return res.status(400).json({
+      return res.status(409).json({
         success: false,
         message: "You have already taken this test",
       });
@@ -35,7 +35,6 @@ const submitTest = async (req, res) => {
       }
     }
 
-
     const response = await Response.create({
       user: userId,
       test: testId,
@@ -46,7 +45,7 @@ const submitTest = async (req, res) => {
       score,
     });
 
-    res.json({
+    res.status(200).json({
       userId,
       testId,
       score,

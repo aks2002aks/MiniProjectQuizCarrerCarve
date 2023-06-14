@@ -24,7 +24,7 @@ const login = async (req, res) => {
         { userId: user._id, name: user.name, email: user.email },
         process.env.JWT_TOKEN,
         {
-          expiresIn: "1h",
+          expiresIn: "1day",
         }
       );
       res.cookie("jwt", authToken);
@@ -48,10 +48,19 @@ const login = async (req, res) => {
 
 const isLoggedIn = async (req, res, next) => {
   try {
+    // // Now you have the Bearer token extracted from the cookie
+    // const cookie = document.cookie;
+    // const token = cookie
+    //   .split(";")
+    //   .map((cookie) => cookie.trim())
+    //   .find((cookie) => cookie.startsWith("jwt="))
+    //   .split("=")[1];
+
+    // bearerToken
     const Bearertoken = req.headers.authorization;
     const token = Bearertoken.split(" ")[1];
     if (token) {
-      const decodedToken =  jwt.verify(token, process.env.JWT_TOKEN);
+      const decodedToken = jwt.verify(token, process.env.JWT_TOKEN);
 
       if (decodedToken) {
         res.locals.user = decodedToken;
