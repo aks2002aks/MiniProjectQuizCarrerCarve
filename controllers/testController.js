@@ -25,8 +25,6 @@ const submitTest = async (req, res) => {
         (q) => q._id.toString() === answer.questionId
       );
 
-      console.log(question);
-
       if (question) {
         const correctAnswers = question.correctAnswers;
         const selectedAnswers = answer.selectedAnswers;
@@ -37,15 +35,16 @@ const submitTest = async (req, res) => {
       }
     }
 
-    // const response = await Response.create({
-    //   user: userId,
-    //   test: testId,
-    //   answers: answers.map((answer) => ({
-    //     question: answer.questionId,
-    //     selectedAnswers: answer.selectedAnswers,
-    //   })),
-    //   score,
-    // });
+
+    const response = await Response.create({
+      user: userId,
+      test: testId,
+      answers: answers.map((answer) => ({
+        question: answer.questionId,
+        selectedAnswers: answer.selectedAnswers,
+      })),
+      score,
+    });
 
     res.json({
       userId,
