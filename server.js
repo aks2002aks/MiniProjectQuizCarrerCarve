@@ -23,7 +23,7 @@ app.use(express.json());
 app.use("/api", userRoutes);
 app.use("/api", authRoutes);
 app.use("/api", testRoutes);
-app.use("/", welcomeRoutes);
+app.use("/api", welcomeRoutes);
 
 // Start the server
 app.listen(3000, () => {
