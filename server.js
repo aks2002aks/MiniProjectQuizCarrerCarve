@@ -1,7 +1,9 @@
 // server.js
-
 const express = require("express");
+
+//to remove unwanted mongoDb query
 const mongoSanitize = require("express-mongo-sanitize");
+
 require("dotenv").config();
 const app = express();
 app.use(express.json());
